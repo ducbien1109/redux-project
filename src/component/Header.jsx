@@ -29,8 +29,7 @@ function Header() {
   // nó ra rỗng ă anh thấy không
   const DataMusic = useSelector(getDataPopularArtist); // như v là anh có thể lấy state trong reducer ra được nè
   const dataPopularRadio = useSelector(getDataPopularRadio);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const getAllMusic = async () => {
     const response = await postApi.getAll();
@@ -100,7 +99,11 @@ function Header() {
           <span style={{ "--i": 7 }}>Y</span>
         </div>
         <div className="header-menu-item">
-          <Button danger>Edit Music</Button>
+          <Button danger>
+            <a href="https://www.spotify.com/vn-vi/premium/?utm_source=app&utm_medium=desktop&utm_campaign=upgrade&ref=web_loggedin_upgrade_button">
+              Explore Premium
+            </a>
+          </Button>
           <Button type="primary" danger>
             <ArrowDownOutlined />
             Install App
@@ -128,7 +131,8 @@ function Header() {
                         <img
                           src={item.image}
                           alt="ảnh"
-                          width={200} height={150}
+                          width={200}
+                          height={150}
                           style={{ borderRadius: "10px" }}
                         />
                         <li>{item.nameMusic}</li>
@@ -137,7 +141,11 @@ function Header() {
                             {playMusic ? <source>{item.audio}</source> : null}
                           </audio> */}
                       </ul>
-                      <ButtonAdmin name="edit" color="primary" clickBtn={()=>navigate(`/admin/${item.id}`)}/>
+                      <ButtonAdmin
+                        name="edit"
+                        color="primary"
+                        clickBtn={() => navigate(`/admin/${item.id}`)}
+                      />
                       <ButtonAdmin
                         name="delete"
                         color="primary"
@@ -164,13 +172,22 @@ function Header() {
                   <>
                     <ul>
                       <div class="box-zoom-out">
-                      <img src={item.image} alt="MTP" width={200} height={150} />
+                        <img
+                          src={item.image}
+                          alt="MTP"
+                          width={200}
+                          height={150}
+                        />
                       </div>
                       <li>{item.nameMusic}</li>
                       <li>{item.author}</li>
                     </ul>
                     <div className="icon-btn-edit">
-                      <ButtonAdmin name="edit" color="primary" clickBtn={()=>navigate(`/admin/${item.id}`)}/>
+                      <ButtonAdmin
+                        name="edit"
+                        color="primary"
+                        clickBtn={() => navigate(`/admin/${item.id}`)}
+                      />
                       <ButtonAdmin
                         name="delete"
                         color="primary"
